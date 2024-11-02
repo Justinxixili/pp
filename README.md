@@ -10,6 +10,17 @@ This project is a patent analysis system that allows users to:
 - Get AI-powered insights using OpenAI integration
 - Visualize patent trends and relationships
 
+## Source Code
+You can find the complete source code on GitHub:
+```
+https://github.com/Justinxixili/pp.git
+```
+
+To clone the repository:
+```bash
+git clone https://github.com/Justinxixili/pp.git
+```
+
 ## Technologies Used
 
 - Backend: Django 4.2
@@ -34,7 +45,7 @@ my_pp/
 
 1. Clone the repository:
 ```bash
-git clone [repository-url]
+git clone https://github.com/Justinxixili/pp.git
 ```
 
 2. Create and activate a virtual environment:
