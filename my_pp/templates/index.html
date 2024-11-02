@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patent Infringement Checker</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Patent Infringement Checker</h1>
+
+        <form id="analysisForm" method="get" action="/login_data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="patent_id" class="form-label">Patent ID:</label>
+                <input type="text" class="form-control" id="patent_id" name="patent_id" value="{{ patent_id }}" equired>
+            </div>
+
+            <div class="mb-3">
+                <label for="company_name" class="form-label">Company Name:</label>
+                <input type="text" class="form-control" id="company_name" name="company_name" value="{{ company_name }}" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Analyze</button>
+        </form>
+
+        <div id="results" class="mt-4" style="display: none;">
+            <h2>Analysis Results</h2>
+            <div id="resultsContent"></div>
+        </div>
+    </div>
+    <div>{{ data.data }}</div>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">product_name</th>
+      <th scope="col">infringement_likelihood</th>
+      <th scope="col">relevant_claims</th>
+        <th scope="col">explanation</th>
+      <th scope="col">specific_features</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for i in data.top_infringing_products %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+      <td >{{ i.product_name }}</td>
+      <td>{{ i.infringement_likelihood }}</td>
+      <td>{{ i.relevant_claims }}</td>
+      <td>{{ i.explanation }}</td>
+      <td>{{ i.specific_features }}</td>
+    </tr>
+      {% endfor %}
+</table>
+    <div class="card">
+  <div class="card-header">
+    overall_risk_assessment
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p>{{ data.overall_risk_assessment }}</p>
+    </blockquote>
+  </div>
+</div>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script>
+    </script>
+</body>
+</html>
