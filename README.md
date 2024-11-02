@@ -147,8 +147,8 @@ http://222.186.21.40:29630
 
 ## License
 
-[Your chosen license]
+
 
 ## Contact
 
-For any questions or issues, please contact [your contact information]
+For any questions or issues, please contact 
